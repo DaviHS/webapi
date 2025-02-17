@@ -46,7 +46,7 @@ export const firebirdConnect = FirebirdDatabase.getConnection;
 
 
 //firebirdConnect(); Teste de conexãoca
-
+/*
 // 🛢️ Conexão com SQL Server
 const sqlServerConfig: sql.config = {
   user: process.env.SQLSERVER_USER,
@@ -72,4 +72,4 @@ export const poolPromise = new sql.ConnectionPool(sqlServerConfig)
     throw err;
   });
 
-export default sql;
+export default sql;*/
