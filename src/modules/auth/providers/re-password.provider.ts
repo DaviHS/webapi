@@ -21,6 +21,7 @@ export class RePasswordProvider implements AuthProvider {
         );
       });
 
+      console.log(info)
       if (!info || info.length === 0) {
         return {
           data: null,
@@ -29,10 +30,10 @@ export class RePasswordProvider implements AuthProvider {
         };
       }
 
-      const dataSenha = new Date(info[0].USUDATAHORASENHA).getFullYear();
+      const dataSenha = new Date(info.USUDATAHORASENHA).getFullYear();
       password = 'Cal' + dataSenha + '#@!' + password.toUpperCase();
 
-      const validPassword = await bcrypt.compare(password, info[0].USUSENHAHASH);
+      const validPassword = await bcrypt.compare(password, info.USUSENHAHASH);
 
       if (!validPassword) {
         return {
@@ -42,16 +43,15 @@ export class RePasswordProvider implements AuthProvider {
         };
       }
 
-      // Retornando as informações do usuário se a autenticação for bem-sucedida
       return {
         data: {
-          USUCODIGO: info[0].USUCODIGO,
-          USUNOME: info[0].USUNOME,
-          USULOGIN: info[0].USULOGIN,
-          USUEMAIL: info[0].USUEMAIL,
-          USURE: info[0].USURE,
-          USUFACIAL: info[0].USUFACIAL,
-          USUFOTO: info[0].USUFOTO
+          USUCODIGO: info.USUCODIGO,
+          USUNOME: info.USUNOME,
+          USULOGIN: info.USULOGIN,
+          USUEMAIL: info.USUEMAIL,
+          USURE: info.USURE,
+          USUFACIAL: info.USUFACIAL,
+          USUFOTO: info.USUFOTO
         },
         error: false,
         message: "Autenticação realizada com sucesso",

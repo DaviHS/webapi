@@ -26,7 +26,7 @@ export class UserService {
     });
   }
 
-  async registerFacial(data: any) {
+  async updateUserFacial(data: any) {
     const user = userSchema.parse(data); 
     const db = await firebirdConnect();
   
@@ -40,13 +40,15 @@ export class UserService {
   
       await new Promise<void>((resolve, reject) => {
         transaction.query(`UPDATE IAUSUARIO SET USUFACIAL = ?, USUFOTO = ? WHERE USUCODIGO = ?`, 
-          [user.facial, user.photo, user.id], (err) => {
-          if (err) {
-            transaction.rollback(() => db.detach());
-            return reject(new Error("Erro ao atualizar os dados faciais do usuário."));
+          [user.facial, user.photo, user.id], 
+          (err) => {
+            if (err) {
+              transaction.rollback(() => db.detach());
+              return reject(new Error("Erro ao atualizar os dados faciais do usuário."));
+            }
+            resolve();
           }
-          resolve();
-        });
+        );
       });
   
       await new Promise<void>((resolve, reject) => {

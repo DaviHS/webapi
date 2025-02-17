@@ -31,7 +31,7 @@ class FirebirdDatabase {
 
   public static async getConnection(): Promise<Firebird.Database> {
     return new Promise((resolve, reject) => {
-      this.getPool().get((err, db) => {
+      FirebirdDatabase.getPool().get((err, db) => {
         if (err) {
           console.error("🔴 Erro ao conectar ao Firebird!", err);
           return reject(err);

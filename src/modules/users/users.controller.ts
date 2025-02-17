@@ -1,5 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { UserService } from "./users.service";
+import { userFacialSchema } from "./users.schema";
 
 const userService = new UserService();
 
@@ -23,7 +24,8 @@ export const createUserHandler = async (req: FastifyRequest, reply: FastifyReply
 
 export const updateUserFacialHandler = async (req: FastifyRequest, reply: FastifyReply) => {
   try {
-    const result = await userService.registerFacial(req.body);
+    const parsedBody = userFacialSchema.parse(req.body);
+    const result = await userService.updateUserFacial(parsedBody);
     reply.send(result);
   } catch (err) {
     reply.status(400).send(err);
