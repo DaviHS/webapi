@@ -1,9 +1,10 @@
 import { fastify } from "fastify";
 import dotenv from "dotenv";
 import { validatorCompiler, serializerCompiler } from "fastify-type-provider-zod";
+import fastifyMultipart from '@fastify/multipart';
 import { corsPlugin, corsOptions } from "./config/cors";
 import { jwtPlugin, jwtOptions } from "./config/jwt";
-import { swaggerPlugin, swaggerUiPlugin, swaggerOptions } from "./config/swagger";
+import { swaggerPlugin, swaggerUiPlugin, swaggerOptions, swaggerSensible } from "./config/swagger";
 import { errorHandler } from "./config/errorHandler";
 import { registerRoutes } from "./modules/index";
 
@@ -19,6 +20,8 @@ export async function createServer() {
 
   app.register(jwtPlugin, jwtOptions);
   app.register(corsPlugin, corsOptions);
+  app.register(fastifyMultipart);
+  app.register(swaggerSensible);
   app.register(swaggerPlugin, swaggerOptions);
   app.register(swaggerUiPlugin, { routePrefix: '/docs' });
 

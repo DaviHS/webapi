@@ -1,4 +1,4 @@
-import { poolPromise  } from "../../../config/db";
+import { poolPromise  } from "@/config/db";
 import { transferSchema } from "../schemas/transfer.schema";
 import { z } from "zod";
 

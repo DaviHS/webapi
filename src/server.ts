@@ -3,7 +3,7 @@ import { createServer } from "./app";
 const start = async () => {
   try {
     const app = await createServer(); 
-    await app.listen({ port: 3000, host: '0.0.0.0' }); 
+    await app.listen({ port: 3001, host: '0.0.0.0' }); 
 
     const address = app.server.address();
     if (address && typeof address !== "string") {

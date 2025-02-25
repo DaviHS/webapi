@@ -1,4 +1,4 @@
-import { poolPromise } from "../../../config/db"; 
+import { poolPromise } from "@/config/db"; 
 import { romaneioSchema } from "../schemas/romaneio.schema";
 import { z } from "zod";
 

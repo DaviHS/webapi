@@ -1,4 +1,3 @@
-export interface AuthProvider{
-    authenticate(userLogin: string, password: string): Promise<any>;
+export interface AuthProvider {
+    authenticate(data: any): Promise<any>;
 }
-  

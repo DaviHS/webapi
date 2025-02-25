@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
 import authRoutes from "./auth/auth.routes";
-import userRoutes from "./users/users.routes";
+import userRoutes from "./users/routes/users.routes";
 import productRoutes from "./products/products.routes";
 import transportRoutes from "./transport/routes/transport.routes";
 
